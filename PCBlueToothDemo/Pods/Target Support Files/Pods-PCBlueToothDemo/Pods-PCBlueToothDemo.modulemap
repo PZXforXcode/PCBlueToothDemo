@@ -1,0 +1,6 @@
+framework module Pods_PCBlueToothDemo {
+  umbrella header "Pods-PCBlueToothDemo-umbrella.h"
+
+  export *
+  module * { export * }
+}

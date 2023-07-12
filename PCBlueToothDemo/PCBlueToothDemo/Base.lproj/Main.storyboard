@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="fnE-vg-eSN">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PCBlueToothDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="K1m-5L-lOh">
+                                <rect key="frame" x="0.0" y="103" width="393" height="585"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" rowHeight="73" id="Zgp-eC-dg2">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="73"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Zgp-eC-dg2" id="2gI-vp-232">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="73"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="vR8-hv-pth"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="scO-j8-o7l"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S20-er-odp">
+                                <rect key="frame" x="115" y="763" width="163" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="扫描附近蓝牙设备"/>
+                                <connections>
+                                    <action selector="scanButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="F0C-as-AXF"/>
+                                </connections>
+                            </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2El-9Z-xVu">
+                                <rect key="frame" x="124.00000000000001" y="708" width="145.33333333333337" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="跳转到我的设备"/>
+                                <connections>
+                                    <action selector="jumpToMyPeripheralButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YaO-mp-bQh"/>
+                                    <action selector="scanButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="46v-gQ-F9m"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="2El-9Z-xVu" firstAttribute="top" secondItem="K1m-5L-lOh" secondAttribute="bottom" constant="20" id="BCj-RQ-1ZP"/>
+                            <constraint firstItem="K1m-5L-lOh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Bzo-At-l0H"/>
+                            <constraint firstItem="K1m-5L-lOh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="J8D-Ad-bY3"/>
+                            <constraint firstItem="S20-er-odp" firstAttribute="top" secondItem="2El-9Z-xVu" secondAttribute="bottom" constant="20" id="S0U-Gf-aL6"/>
+                            <constraint firstItem="2El-9Z-xVu" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Z8B-8j-pHt"/>
+                            <constraint firstItem="S20-er-odp" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-20" id="f3S-Md-REx"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="K1m-5L-lOh" secondAttribute="trailing" id="gld-Jr-fdh"/>
+                            <constraint firstItem="S20-er-odp" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="wAa-4H-TsA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="ef6-ck-scq"/>
+                    <connections>
+                        <outlet property="jumpButton" destination="2El-9Z-xVu" id="RXh-zt-6YR"/>
+                        <outlet property="tableView" destination="K1m-5L-lOh" id="Z5O-4O-WQg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="947.32824427480909" y="4.9295774647887329"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="w5v-e3-VSt">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="fnE-vg-eSN" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="aWL-n3-22J">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="xS0-uQ-zYt"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8DT-rL-QSa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="20.610687022900763" y="4.9295774647887329"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

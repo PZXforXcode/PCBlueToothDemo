@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--My Peripheral View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="MyPeripheralViewController" id="Y6W-OH-hqX" customClass="MyPeripheralViewController" customModule="PCBlueToothDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nDb-fM-l2L">
+                                <rect key="frame" x="0.0" y="59" width="393" height="598"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="87" id="5TB-Ae-pWG">
+                                        <rect key="frame" x="0.0" y="50" width="393" height="87"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5TB-Ae-pWG" id="5ox-tY-TBZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="393" height="87"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="n1q-En-fTn"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="Pha-fN-fMD"/>
+                                </connections>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6yJ-05-qDa">
+                                <rect key="frame" x="150" y="763" width="93.333333333333314" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="发送数据"/>
+                                <connections>
+                                    <action selector="sendDataButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="S4S-H7-9ht"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="c0x-tq-sJr">
+                                <rect key="frame" x="132.66666666666666" y="720" width="127.99999999999997" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="发送升级请求"/>
+                                <connections>
+                                    <action selector="sendUpdateButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dyS-tA-cnN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NWV-rC-lvf">
+                                <rect key="frame" x="97.666666666666686" y="677" width="198" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="获取远程控制初始数据"/>
+                                <connections>
+                                    <action selector="GetInitialData:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IY4-RV-uH2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6yJ-05-qDa" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-20" id="3Th-Hb-jPD"/>
+                            <constraint firstItem="c0x-tq-sJr" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Ag5-Ys-7yl"/>
+                            <constraint firstItem="nDb-fM-l2L" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DsZ-cj-BOv"/>
+                            <constraint firstItem="NWV-rC-lvf" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="IQc-yp-4OB"/>
+                            <constraint firstItem="6yJ-05-qDa" firstAttribute="top" secondItem="c0x-tq-sJr" secondAttribute="bottom" constant="8" symbolic="YES" id="JHS-dX-9My"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nDb-fM-l2L" secondAttribute="trailing" id="O7p-kh-Ufr"/>
+                            <constraint firstItem="nDb-fM-l2L" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="PCw-hP-rMv"/>
+                            <constraint firstItem="NWV-rC-lvf" firstAttribute="top" secondItem="nDb-fM-l2L" secondAttribute="bottom" constant="20" id="kXs-ix-wqO"/>
+                            <constraint firstItem="6yJ-05-qDa" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="qQL-GR-Fcp"/>
+                            <constraint firstItem="c0x-tq-sJr" firstAttribute="top" secondItem="NWV-rC-lvf" secondAttribute="bottom" constant="8" symbolic="YES" id="qtG-UA-tRL"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="nDb-fM-l2L" id="njy-8s-HGz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="135.1145038167939" y="4.9295774647887329"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
