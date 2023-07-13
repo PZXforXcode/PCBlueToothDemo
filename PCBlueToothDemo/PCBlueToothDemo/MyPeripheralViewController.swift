@@ -92,16 +92,24 @@ class MyPeripheralViewController: UIViewController,BluetoothManagerDelegate {
                 print(byteArray)
                 print(hexArray)
                 
-                print("AC状态   = \(byteArray[0])")
-                print("DC状态   = \(byteArray[1])")
-                print("充电上限   = \(byteArray[2])")
-                print("放电下限   = \(byteArray[3])")
-                print("按键声音   = \(byteArray[4])")
-                print("设备待机时间（分钟） = \(UInt16(byteArray[5]) * 256 + UInt16(byteArray[6]))")
-                print("息屏时间（秒）   = \(UInt16(byteArray[7])*256 + UInt16(byteArray[8]))")
-                print("交流待机时间（分钟） = \(UInt16(byteArray[9]) * 256 + UInt16(byteArray[10]))")
-                print("LED状态   = \(byteArray[11])")
-                print("温度单位（00代表摄氏度  01代表华氏度）   = \(byteArray[12])")
+                
+                if byteArray.count > 12 {
+                    
+                    print("AC状态   = \(byteArray[0])")
+                    print("DC状态   = \(byteArray[1])")
+                    print("充电上限   = \(byteArray[2])")
+                    print("放电下限   = \(byteArray[3])")
+                    print("按键声音   = \(byteArray[4])")
+                    print("设备待机时间（分钟） = \(UInt16(byteArray[5]) * 256 + UInt16(byteArray[6]))")
+                    print("息屏时间（秒）   = \(UInt16(byteArray[7])*256 + UInt16(byteArray[8]))")
+                    print("交流待机时间（分钟） = \(UInt16(byteArray[9]) * 256 + UInt16(byteArray[10]))")
+                    print("LED状态   = \(byteArray[11])")
+                    print("温度单位（00代表摄氏度  01代表华氏度）   = \(byteArray[12])")
+                    
+                    
+                }
+                
+
                 
                 
                 
@@ -195,6 +203,73 @@ class MyPeripheralViewController: UIViewController,BluetoothManagerDelegate {
     }
     
     //MARK: – 点击事件
+    
+    fileprivate func changeConfigurationData(alertController:UIAlertController,commandId:UInt8) {
+        if let userNameTextField = alertController.textFields?.first {
+            print("结果 = \(userNameTextField.text ?? "")")
+            let myInt = Int(userNameTextField.text ?? "0")
+            let charging: UInt8 = UInt8(myInt ?? 0)   // 十进制数值
+            let hexValue = "0x" + String(format: "%02X", charging)  // 转换为十六进制字符串
+            print(hexValue)
+            let command: [UInt8] = [0x00, commandId, 0x00,charging]
+            let data = Data(command)
+            BluetoothManager.shared.sendData(data: data, characteristicUUID: CBUUID(string: "6E400002-B5A3-F393-E0A9-E50E24DCCA9E"))
+        }
+    }
+    
+    @IBAction func changeConfigurationDataButtonPressed(_ sender: UIButton) {
+        
+        UtilTool.showAlertSheet(withTitle: "提示", setMsg: "选择修改", withButtonTitles: ["AC开关","DC开关","充电上限配置","放电下限配置"], withButtonStyleArray: [0,0,0,0], vc: self) { index in
+            
+            if (index == 0) {
+                
+                
+            } else if (index == 1) {
+                
+            } else if (index == 2) {
+                
+                
+                ///Swift
+                let alertController = UIAlertController(title: nil, message: "请输入充电上限配置", preferredStyle: .alert)
+                // Add cancel button
+                alertController.addAction(UIAlertAction(title: "取消", style: .default, handler: { action in
+                }))
+                // Add confirm button
+                alertController.addAction(UIAlertAction(title: "确定", style: .default, handler: { action in
+                    self.changeConfigurationData(alertController: alertController, commandId: 0x05)
+                }))
+                // Define the first text field
+                alertController.addTextField { textField in
+                    textField.placeholder = "80-100梯度为5"
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                    
+                }
+                
+            } else if (index == 3) {
+                
+                ///Swift
+                let alertController = UIAlertController(title: nil, message: "请输入放电下限配置", preferredStyle: .alert)
+                // Add cancel button
+                alertController.addAction(UIAlertAction(title: "取消", style: .default, handler: { action in
+                }))
+                // Add confirm button
+                alertController.addAction(UIAlertAction(title: "确定", style: .default, handler: { action in
+                    self.changeConfigurationData(alertController: alertController, commandId: 0x06)
+                }))
+                // Define the first text field
+                alertController.addTextField { textField in
+                    textField.placeholder = "0-40梯度为1"
+                    self.present(alertController, animated: true, completion: nil)
+                    
+                }
+            }
+            
+            
+        }
+        
+    }
+    
     
     @IBAction func GetInitialData(_ sender: UIButton) {
         

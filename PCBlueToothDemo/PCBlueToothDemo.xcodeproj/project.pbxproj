@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		897749D92A5F8C2300C3B958 /* CommonUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = 897749D62A5F8C2300C3B958 /* CommonUtility.m */; };
+		897749DA2A5F8C2300C3B958 /* UtilTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 897749D72A5F8C2300C3B958 /* UtilTool.m */; };
 		89DE35152A57970100D9E8CE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DE35142A57970100D9E8CE /* AppDelegate.swift */; };
 		89DE35172A57970100D9E8CE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DE35162A57970100D9E8CE /* SceneDelegate.swift */; };
 		89DE35192A57970100D9E8CE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89DE35182A57970100D9E8CE /* ViewController.swift */; };
@@ -24,6 +26,11 @@
 /* Begin PBXFileReference section */
 		06C41BC078454E850BA2B1CF /* Pods-PCBlueToothDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PCBlueToothDemo.release.xcconfig"; path = "Target Support Files/Pods-PCBlueToothDemo/Pods-PCBlueToothDemo.release.xcconfig"; sourceTree = "<group>"; };
 		21C9F03F980767BC7347EA70 /* Pods_PCBlueToothDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PCBlueToothDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		897749D02A5F8BF700C3B958 /* PCBlueToothDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PCBlueToothDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		897749D52A5F8C2300C3B958 /* UtilTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UtilTool.h; sourceTree = "<group>"; };
+		897749D62A5F8C2300C3B958 /* CommonUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtility.m; sourceTree = "<group>"; };
+		897749D72A5F8C2300C3B958 /* UtilTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UtilTool.m; sourceTree = "<group>"; };
+		897749D82A5F8C2300C3B958 /* CommonUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtility.h; sourceTree = "<group>"; };
 		89DE35112A57970100D9E8CE /* PCBlueToothDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PCBlueToothDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		89DE35142A57970100D9E8CE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		89DE35162A57970100D9E8CE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -60,6 +67,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		897749D42A5F8C2300C3B958 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				897749D52A5F8C2300C3B958 /* UtilTool.h */,
+				897749D62A5F8C2300C3B958 /* CommonUtility.m */,
+				897749D72A5F8C2300C3B958 /* UtilTool.m */,
+				897749D82A5F8C2300C3B958 /* CommonUtility.h */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		89DE35082A57970100D9E8CE = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +99,7 @@
 		89DE35132A57970100D9E8CE /* PCBlueToothDemo */ = {
 			isa = PBXGroup;
 			children = (
+				897749D42A5F8C2300C3B958 /* Utils */,
 				89DE35142A57970100D9E8CE /* AppDelegate.swift */,
 				89DE35162A57970100D9E8CE /* SceneDelegate.swift */,
 				89DE35282A5797C700D9E8CE /* BluetoothManager.swift */,
@@ -93,6 +112,7 @@
 				89DE351D2A57970300D9E8CE /* Assets.xcassets */,
 				89DE351F2A57970300D9E8CE /* LaunchScreen.storyboard */,
 				89DE35222A57970300D9E8CE /* Info.plist */,
+				897749D02A5F8BF700C3B958 /* PCBlueToothDemo-Bridging-Header.h */,
 			);
 			path = PCBlueToothDemo;
 			sourceTree = "<group>";
@@ -140,6 +160,7 @@
 				TargetAttributes = {
 					89DE35102A57970100D9E8CE = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1410;
 					};
 				};
 			};
@@ -223,12 +244,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				89DE35192A57970100D9E8CE /* ViewController.swift in Sources */,
+				897749DA2A5F8C2300C3B958 /* UtilTool.m in Sources */,
 				89DE35152A57970100D9E8CE /* AppDelegate.swift in Sources */,
 				89DE352D2A57BB0600D9E8CE /* peripheralSaveManager.swift in Sources */,
 				89DE352F2A57E4BE00D9E8CE /* MyPeripheralViewController.swift in Sources */,
 				89DE352B2A57B47F00D9E8CE /* TestModel.swift in Sources */,
 				89DE35292A5797C700D9E8CE /* BluetoothManager.swift in Sources */,
 				89DE35172A57970100D9E8CE /* SceneDelegate.swift in Sources */,
+				897749D92A5F8C2300C3B958 /* CommonUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +397,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZRL29LD28H;
@@ -397,6 +421,8 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PCBlueToothDemo/PCBlueToothDemo-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -408,6 +434,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZRL29LD28H;
@@ -431,6 +458,7 @@
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "PCBlueToothDemo/PCBlueToothDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

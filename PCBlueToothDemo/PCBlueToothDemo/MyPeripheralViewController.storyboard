@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="nDb-fM-l2L">
-                                <rect key="frame" x="0.0" y="59" width="393" height="598"/>
+                                <rect key="frame" x="0.0" y="59" width="393" height="555"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" rowHeight="87" id="5TB-Ae-pWG">
@@ -58,18 +58,28 @@
                                     <action selector="GetInitialData:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="IY4-RV-uH2"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjW-aa-Myh">
+                                <rect key="frame" x="132.66666666666666" y="634" width="127.99999999999997" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="修改配置数据"/>
+                                <connections>
+                                    <action selector="changeConfigurationDataButtonPressed:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="R8A-H8-bWy"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6yJ-05-qDa" firstAttribute="bottom" secondItem="vDu-zF-Fre" secondAttribute="bottom" constant="-20" id="3Th-Hb-jPD"/>
                             <constraint firstItem="c0x-tq-sJr" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="Ag5-Ys-7yl"/>
+                            <constraint firstItem="cjW-aa-Myh" firstAttribute="top" secondItem="nDb-fM-l2L" secondAttribute="bottom" constant="20" id="BGc-Ki-554"/>
+                            <constraint firstItem="cjW-aa-Myh" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="D9q-QY-WaV"/>
                             <constraint firstItem="nDb-fM-l2L" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="DsZ-cj-BOv"/>
+                            <constraint firstItem="NWV-rC-lvf" firstAttribute="top" secondItem="cjW-aa-Myh" secondAttribute="bottom" constant="8" symbolic="YES" id="Foc-Wy-L2Z"/>
                             <constraint firstItem="NWV-rC-lvf" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="IQc-yp-4OB"/>
                             <constraint firstItem="6yJ-05-qDa" firstAttribute="top" secondItem="c0x-tq-sJr" secondAttribute="bottom" constant="8" symbolic="YES" id="JHS-dX-9My"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="nDb-fM-l2L" secondAttribute="trailing" id="O7p-kh-Ufr"/>
                             <constraint firstItem="nDb-fM-l2L" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="PCw-hP-rMv"/>
-                            <constraint firstItem="NWV-rC-lvf" firstAttribute="top" secondItem="nDb-fM-l2L" secondAttribute="bottom" constant="20" id="kXs-ix-wqO"/>
                             <constraint firstItem="6yJ-05-qDa" firstAttribute="centerX" secondItem="vDu-zF-Fre" secondAttribute="centerX" id="qQL-GR-Fcp"/>
                             <constraint firstItem="c0x-tq-sJr" firstAttribute="top" secondItem="NWV-rC-lvf" secondAttribute="bottom" constant="8" symbolic="YES" id="qtG-UA-tRL"/>
                         </constraints>
