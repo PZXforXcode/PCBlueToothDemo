@@ -179,10 +179,17 @@ class MyPeripheralViewController: UIViewController,BluetoothManagerDelegate {
         // Do any additional setup after loading the view.
         
         
+        NotificationCenter.default.addObserver(self, selector: #selector(fileNotification), name: NSNotification.Name("FileNotification"), object: nil)
+
         BluetoothManager.shared.delegate = self
         setSubviews()
         fillData()
-        loadFile()
+//        loadFile()
+    }
+    
+    deinit {
+        
+        NotificationCenter.default.removeObserver(self)
     }
     //MARK: – UI
     // subviews
@@ -279,10 +286,20 @@ class MyPeripheralViewController: UIViewController,BluetoothManagerDelegate {
         
     }
     @IBAction func sendDataButtonPressed(_ sender: UIButton) {
+        if (dataToSend.count == 0) {
+            
+            UtilTool.showAlertView("提示", setMsg: "请先去微信打开文件",vc: self)
+            
+            return
+        }
         sendData()
     }
     
     @IBAction func sendUpdateButtonPressed(_ sender: UIButton) {
+        if (dataToSend.count == 0) {
+            UtilTool.showAlertView("提示", setMsg: "请先去微信打开文件",vc: self)
+            return
+        }
         canUpdate()
     }
     //MARK: – Public Method
@@ -303,6 +320,7 @@ class MyPeripheralViewController: UIViewController,BluetoothManagerDelegate {
                 print("文件地址 :\(String(describing: response.fileURL ?? URL(string: "---")))")
                 
                 if let fileUrl = response.fileURL {
+                    
                     do {
                         let data = try Data(contentsOf: fileUrl)
                         // 使用获取到的data进行处理
@@ -320,6 +338,35 @@ class MyPeripheralViewController: UIViewController,BluetoothManagerDelegate {
         }
         
     }
+    
+    @objc func fileNotification(notifi: Notification) {
+        
+        if let info = notifi.userInfo as? [String: Any] {
+            // fileName是文件名称、filePath是文件存储在本地的路径
+            if let fileName = info["fileName"] as? String, let filePath = info["filePath"] as? String {
+                print("fileName=\(fileName)\n--------\nfilePath=\(filePath)")
+                
+                //文件地址有中文进行Encode
+                let newPath = filePath.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
+                
+                if let fileUrl = URL(string: newPath) {
+                    do {
+                        let data = try Data(contentsOf: fileUrl)
+                        // 使用获取到的data进行处理
+                        dataToSend = data
+                        // ...
+                    } catch {
+                        print("Failed to load data from file: \(error)")
+                        
+                    }
+                }
+                
+            }
+        }
+        
+    }
+    
+    
     
     func canUpdate(){
         //判断是否可以升级

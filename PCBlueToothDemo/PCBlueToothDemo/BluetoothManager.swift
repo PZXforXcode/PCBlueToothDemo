@@ -44,9 +44,9 @@ class BluetoothManager: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate
             print("Bluetooth is not enabled.")
             return
         }
-        centralManager.scanForPeripherals(withServices: nil, options: nil)
+//        centralManager.scanForPeripherals(withServices: nil, options: nil)
 
-//        centralManager.scanForPeripherals(withServices: [CBUUID.init(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")], options: nil)
+        centralManager.scanForPeripherals(withServices: [CBUUID.init(string: "6E400001-B5A3-F393-E0A9-E50E24DCCA9E")], options: nil)
 //        centralManager.scanForPeripherals(withServices: [CBUUID.init(string: "0xFF01")], options: nil)
 
     }

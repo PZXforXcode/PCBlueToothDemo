@@ -201,7 +201,8 @@ enum {
  *弹出警告对话框
  */
 +(void)ShowAlertView:(NSString *)title setMsg:(NSString *)msg;
-
+//新版
++(void)ShowAlertView:(NSString *)title setMsg:(NSString *)msg VC:(UIViewController *)vc;
 /**
  a弹出有按钮对话框
 

@@ -10,6 +10,7 @@ import UIKit
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDelegate {
 
+    var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -23,6 +24,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate,UNUserNotificationCenterDe
         UNUserNotificationCenter.current().delegate = self
 
         return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        //        if let window = self.window {
+        //            if let url = url {
+        let fileName = url.lastPathComponent  // Gets the full filename (with suffix) from the path
+        var path = url.absoluteString // The full url string
+        path = URLDecodedString(path) // Solves the url encoding problem
+        let mutableString = NSMutableString(string: path)
+        
+        print(mutableString)
+        
+        //
+        if path.hasPrefix("file://") { // Determines if it is a file by prefix
+            
+            // At this point, the file is stored locally, and can be used on your own pages
+            let dict = ["fileName":fileName,
+                        "filePath":mutableString] as [String : Any]
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FileNotification"), object: nil, userInfo: dict)
+            
+            return true
+        }
+        //            }
+        //        }
+        return true
+    }
+    
+    // When the file name is in Chinese, solve the url encoding problem
+    func URLDecodedString(_ str: String) -> String {
+        guard let decodedString = str.removingPercentEncoding else {
+            return str
+        }
+        print("decodedString = \(decodedString)")
+        return decodedString
     }
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {

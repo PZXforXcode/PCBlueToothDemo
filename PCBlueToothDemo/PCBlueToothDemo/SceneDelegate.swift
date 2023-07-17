@@ -12,6 +12,38 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
 
+    func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        
+        let url = URLContexts.first!.url
+        let fileName = url.lastPathComponent  // Gets the full filename (with suffix) from the path
+        var path = url.absoluteString // The full url string
+        path = URLDecodedString(path) // Solves the url encoding problem
+        let mutableString = NSMutableString(string: path)
+        
+        print(mutableString)
+        
+        //
+        if path.hasPrefix("file://") { // Determines if it is a file by prefix
+            
+            // At this point, the file is stored locally, and can be used on your own pages
+            let dict = ["fileName":fileName,
+                        "filePath":mutableString] as [String : Any]
+            
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FileNotification"), object: nil, userInfo: dict)
+            
+        }
+        
+    }
+    
+    // When the file name is in Chinese, solve the url encoding problem
+    func URLDecodedString(_ str: String) -> String {
+        guard let decodedString = str.removingPercentEncoding else {
+            return str
+        }
+        print("decodedString = \(decodedString)")
+        return decodedString
+    }
+    
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.

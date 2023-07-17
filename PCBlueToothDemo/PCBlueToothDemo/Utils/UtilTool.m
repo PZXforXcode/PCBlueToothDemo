@@ -927,6 +927,20 @@
     return queryItemDict;
 }
 
++(void)ShowAlertView:(NSString *)title setMsg:(NSString *)msg VC:(UIViewController *)vc
+{
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:title message:msg preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction  *ok =[UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+        
+        
+    }];
+    [alert addAction:ok];
+    [vc presentViewController:alert animated:YES completion:nil];
+
+
+}
+
 +(void)ShowAlertView:(NSString *)title setMsg:(NSString *)msg leftButtonTitle:(NSString *)leftTitle leftStyle:(UIAlertActionStyle)leftStyle rightButtonTitle:(NSString *)rightTitle rightStyle:(UIAlertActionStyle)rightStyle VC:(UIViewController *)vc leftblock:(OKbuttonBlock)leftblock rightbuttonBlock:(CancelbuttonBlock)rightblock{
     
     
